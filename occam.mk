@@ -33,7 +33,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.telephony.default_network=3 \
 	ro.ril.def.preferred.network=3 \
-	ro.com.android.mobiledata=false \
+	ro.com.android.mobiledata=true \
 
 # Nexus 4 has no gesture sensor
 PRODUCT_PROPERTY_OVERRIDES += \

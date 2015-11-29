@@ -13,9 +13,6 @@
 
   <string-array name="config_disabledUntilUsedPreinstalledImes" translatable="false">
     <item>com.google.android.inputmethod.latin</item>
-    <item>com.google.android.apps.inputmethod.hindi</item>
-    <item>com.google.android.inputmethod.japanese</item>
-    <item>com.google.android.inputmethod.korean</item>
     <item>com.google.android.inputmethod.pinyin</item>
     <item>jp.co.omronsoft.iwnnime.ml</item>
     <item>com.nuance.xt9.input</item>

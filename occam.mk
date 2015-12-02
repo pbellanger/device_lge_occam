@@ -96,7 +96,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	keyguard.no_require_sim=true \
 	af.fast_track_multiplier=1 \
 	ro.build.expect.bootloader=MAKOZ30f \
-	ro.build.expect.baseband=M9615A-CEFWMAZM-2.0.1701.07 \
+	ro.build.expect.baseband=M9615A-CEFWMAZM-2.0.1700.48 \
 
 # reduce system image size
 PRODUCT_AAPT_CONFIG := normal

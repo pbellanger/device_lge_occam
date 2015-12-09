@@ -41,6 +41,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # override package for reduce system image
 PRODUCT_PACKAGES := \
+	DeviceAssistStub \
 	EditorsDocsStub \
 	EditorsSheetsStub \
 	EditorsSlidesStub \
@@ -62,6 +63,9 @@ PRODUCT_PACKAGES += \
 	PartnerBookmarksProvider \
 	CellBroadcastReceiver \
 	OccamLayout \
+
+PRODUCT_PACKAGES += \
+	Stk
 
 PRODUCT_COPY_FILES := \
 	device/lge/occam/init.occam.rc:root/init.occam.rc \

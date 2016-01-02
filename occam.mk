@@ -104,7 +104,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # reduce system image size
 PRODUCT_AAPT_CONFIG := normal
 
-PRODUCT_DEFAULT_DEV_CERTIFICATE := device/lge/occam/security/release-keys
+#PRODUCT_DEFAULT_DEV_CERTIFICATE := device/lge/occam/security/release-keys
 
 PRODUCT_NAME := occam
 PRODUCT_BRAND := Google

@@ -1,7 +1,7 @@
 #/bin/bash
 
 repo forall -c "git reset --hard && git clean -f -d && git am --abort"
-repo abandon fake_nexus 
+repo abandon fake_nexus
 repo start fake_nexus --all
 
 TOOLS_DIRNAME=$(dirname $0)
@@ -19,6 +19,12 @@ do
     ( cd ${APPLY_DIR} && git am ${PATCH} )
   done
 done
+
+# Add developer option to include reboot in global actions menu
+cd $ANDROID_BUILD_TOP/frameworks/base
+git fetch https://android.googlesource.com/platform/frameworks/base refs/changes/72/184272/4 && git cherry-pick FETCH_HEAD
+cd $ANDROID_BUILD_TOP/packages/apps/Settings
+git fetch https://android.googlesource.com/platform/packages/apps/Settings refs/changes/69/183769/3 && git cherry-pick FETCH_HEAD
 
 rm -f ${TOP}/frameworks/base/data/sounds/AllAudio.mk
 rm -rf ${TOP}/hardware/qcom/gps/msm8084

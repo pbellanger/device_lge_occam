@@ -1,11 +1,7 @@
 #!/bin/sh
 
-for keyname in release-keys platform shared media verify
+subject='/C=US/ST=Virginia/L=Forest/O=Bijia/OU=Bijia/CN=Bijia/emailAddress=pbellanger@hotmail.com'
+for x in releasekey platform shared media testkey
 do
-  echo "" | $ANDROID_BUILD_TOP/development/tools/make_key $keyname '/C=KR/L=Guri/O=ganachoco/OU=ganachoco/CN=ganachoco/emailAddress=ganadist@gmail.com'
-done
-
-for F in release-keys*
-do
-  ln -sf $F ${F/release-keys/testkey}
+    $ANDROID_BUILD_TOP/development/tools/make_key $x "$subject"
 done

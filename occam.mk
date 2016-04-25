@@ -13,10 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+# Opengapps settings 
+GAPPS_VARIANT := stock
+GAPPS_FORCE_PACKAGE_OVERRIDES := true
+GAPPS_FORCE_MATCHING_DPI := false
+
 PRODUCT_PACKAGE_OVERLAYS := \
 	device/lge/occam/overlay-occam \
 	device/lge/occam/overlay-nexus \
-	device/lge/occam/overlay-gms \
 
 #	device/lge/occam/overlay-car \
 
@@ -65,18 +70,18 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
 	Stk \
+	NfcProvision
+
+# Include additional opengapps package not included in selected variant
+PRODUCT_PACKAGES += \
 	GCS \
-	NfcProvision \
 
 PRODUCT_COPY_FILES := \
 	device/lge/occam/init.occam.rc:root/init.occam.rc \
 
-$(call inherit-product, vendor/google/product/gms.mk)
-$(call inherit-product, vendor/google/product/gms-nexus.mk)
-$(call inherit-product, vendor/google/product/facelock.mk)
-$(call inherit-product, vendor/google/product/bootanimation.mk)
+$(call inherit-product, vendor/google/build/bootanimation/bootanimation.mk)
+$(call inherit-product, vendor/google/build/opengapps-packages.mk)
 $(call inherit-product, device/lge/mako/full_mako.mk)
-$(call inherit-product, device/lge/occam/AudioPackage.mk)
 
 ifeq ($(TARGET_BUILD_VARIANT),user)
   PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -106,7 +111,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # reduce system image size
 PRODUCT_AAPT_CONFIG := normal
 
-PRODUCT_DEFAULT_DEV_CERTIFICATE := device/lge/occam/security/releasekey
+#PRODUCT_DEFAULT_DEV_CERTIFICATE := device/lge/occam/security/releasekey
 
 PRODUCT_NAME := occam
 PRODUCT_BRAND := Google

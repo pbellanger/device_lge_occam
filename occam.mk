@@ -110,6 +110,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # reduce system image size
 PRODUCT_AAPT_CONFIG := normal
+PRODUCT_LOCALES := en_US en_GB fr_FR zh-rTW
 
 #PRODUCT_DEFAULT_DEV_CERTIFICATE := device/lge/occam/security/releasekey
 

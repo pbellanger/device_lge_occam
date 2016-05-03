@@ -18,6 +18,10 @@
 GAPPS_VARIANT := stock
 GAPPS_FORCE_PACKAGE_OVERRIDES := true
 GAPPS_FORCE_MATCHING_DPI := false
+# Use own  variables for product type and dpi because the variables defined in device/asus/grouper
+# (PRODUCT_CHARACTERISTICS and PRODUCT_AAPT_PREF_CONFIG) do not seem to work properly
+GAPPS_PRODUCT_TYPE := phone
+GAPPS_PRODUCT_DPI := xhdpi
 
 PRODUCT_PACKAGE_OVERLAYS := \
 	device/lge/occam/overlay-occam \

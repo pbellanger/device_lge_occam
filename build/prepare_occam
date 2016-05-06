@@ -1,6 +1,6 @@
 #/bin/bash
 
-repo start fake_nexus --all
+repo start occam --all
 
 TOOLS_DIRNAME=$(dirname $0)
 PATCHES_DIRNAME=${TOOLS_DIRNAME}/../patches/

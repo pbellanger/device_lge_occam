@@ -86,6 +86,7 @@ PRODUCT_COPY_FILES := \
 $(call inherit-product, vendor/google/build/bootanimation/bootanimation.mk)
 $(call inherit-product, vendor/google/build/opengapps-packages.mk)
 $(call inherit-product, device/lge/mako/full_mako.mk)
+$(call inherit-product, device/lge/occam/AudioPackage.mk)
 
 ifeq ($(TARGET_BUILD_VARIANT),user)
   PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \

@@ -67,7 +67,7 @@ PRODUCT_PACKAGES := \
 	YouTubeStub \
 
 PRODUCT_PACKAGES += \
-	FakeNexusProvision \
+	NexusProvision \
 	PartnerBookmarksProvider \
 	CellBroadcastReceiver \
 	OccamLayout \

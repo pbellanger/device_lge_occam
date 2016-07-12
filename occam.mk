@@ -65,6 +65,7 @@ PRODUCT_PACKAGES := \
 	TranslateStub \
 	VideosStub \
 	YouTubeStub \
+        PhotosStub
 
 PRODUCT_PACKAGES += \
 	NexusProvision \

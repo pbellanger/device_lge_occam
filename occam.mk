@@ -84,7 +84,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES := \
 	device/lge/occam/init.occam.rc:root/init.occam.rc \
 
-$(call inherit-product, vendor/google/build/bootanimation/bootanimation.mk)
+$(call inherit-product, vendor/bijia/googleaddons/bootanimation/bootanimation.mk)
 $(call inherit-product, vendor/google/build/opengapps-packages.mk)
 $(call inherit-product, device/lge/mako/full_mako.mk)
 $(call inherit-product, device/lge/occam/AudioPackage.mk)

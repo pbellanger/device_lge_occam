@@ -1,6 +1,6 @@
 #/bin/bash
 
-repo start occam --all
+repo start occam bionic build external/skia frameworks/base hardware/qcom/audio libcore packages/apps/Settings system/core 
 
 TOOLS_DIRNAME=$(dirname $0)
 PATCHES_DIRNAME=${TOOLS_DIRNAME}/../patches/

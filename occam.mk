@@ -18,10 +18,7 @@
 GAPPS_VARIANT := stock
 GAPPS_FORCE_PACKAGE_OVERRIDES := true
 GAPPS_FORCE_MATCHING_DPI := false
-# Use own  variables for product type and dpi because the variables defined in device/asus/grouper
-# (PRODUCT_CHARACTERISTICS and PRODUCT_AAPT_PREF_CONFIG) do not seem to work properly
-GAPPS_PRODUCT_TYPE := phone
-GAPPS_PRODUCT_DPI := xhdpi
+GAPPS_FORCE_PIXEL_LAUNCHER := true
 
 PRODUCT_PACKAGE_OVERLAYS := \
 	device/lge/occam/overlay-occam \
@@ -47,6 +44,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Nexus 4 has no gesture sensor
 PRODUCT_PROPERTY_OVERRIDES += \
 	gesture.disable_camera_launch=1 \
+
+# remove unecessary google packages  to reduce system image
+GAPPS_EXCLUDED_PACKAGES := GoogleVrCore \
+        PlayGames \
+        Music2 \
+        PrebuiltGmail
 
 # override package for reduce system image
 PRODUCT_PACKAGES := \

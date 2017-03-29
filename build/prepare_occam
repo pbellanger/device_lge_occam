@@ -1,6 +1,6 @@
 #/bin/bash
 
-repo start occam bionic build external/skia frameworks/base hardware/qcom/audio libcore packages/apps/Settings system/core 
+repo start occam bionic frameworks/base system/sepolicy 
 
 TOOLS_DIRNAME=$(dirname $0)
 PATCHES_DIRNAME=${TOOLS_DIRNAME}/../patches/
@@ -17,12 +17,3 @@ do
     ( cd ${APPLY_DIR} && git am ${PATCH} )
   done
 done
-
-# Add developer option to include reboot in global actions menu
-cd $ANDROID_BUILD_TOP/frameworks/base
-git fetch https://android.googlesource.com/platform/frameworks/base refs/changes/72/184272/4 && git cherry-pick FETCH_HEAD
-cd $ANDROID_BUILD_TOP/packages/apps/Settings
-git fetch https://android.googlesource.com/platform/packages/apps/Settings refs/changes/69/183769/3 && git cherry-pick FETCH_HEAD
-
-rm -rf ${TOP}/hardware/qcom/gps/msm8084
-rm -rf ${TOP}/hardware/qcom/gps/msm8974

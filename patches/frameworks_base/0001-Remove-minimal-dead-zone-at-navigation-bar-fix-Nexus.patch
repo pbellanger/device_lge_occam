@@ -1,0 +1,30 @@
+From 9d07a7fc68c6cf70f4b2478ed05a564bf86a5790 Mon Sep 17 00:00:00 2001
+From: Grigoriy Kraynov <grigoriy.kraynov@gmail.com>
+Date: Fri, 17 Apr 2015 22:18:41 +0300
+Subject: [PATCH] Remove minimal dead zone at navigation bar (fix Nexus 4)
+
+Some Nexus 4 devices have severe hardware issue when bottom touches
+floors to 16px and resides in deadzone forever and phone is unusable.
+
+Issue: /a/41219
+Change-Id: I1a1543745d51f5df7588d3cc2e54bf537113ffd2
+---
+ .../SystemUI/src/com/android/systemui/statusbar/policy/DeadZone.java    | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/policy/DeadZone.java b/packages/SystemUI/src/com/android/systemui/statusbar/policy/DeadZone.java
+index 1cad61f..ef2210d 100644
+--- a/packages/SystemUI/src/com/android/systemui/statusbar/policy/DeadZone.java
++++ b/packages/SystemUI/src/com/android/systemui/statusbar/policy/DeadZone.java
+@@ -97,7 +97,7 @@ public class DeadZone extends View {
+             return 0;
+         long dt = (now - mLastPokeTime);
+         if (dt > mHold + mDecay)
+-            return mSizeMin;
++            return 0;
+         if (dt < mHold)
+             return mSizeMax;
+         return (int) lerp(mSizeMax, mSizeMin, (float) (dt - mHold) / mDecay);
+-- 
+1.9.1
+

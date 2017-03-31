@@ -1,6 +1,6 @@
 #/bin/bash
 
-repo start occam bionic frameworks/base system/sepolicy 
+repo start occam bionic frameworks/base system/sepolicy vendor/google/build
 
 TOOLS_DIRNAME=$(dirname $0)
 PATCHES_DIRNAME=${TOOLS_DIRNAME}/../patches/

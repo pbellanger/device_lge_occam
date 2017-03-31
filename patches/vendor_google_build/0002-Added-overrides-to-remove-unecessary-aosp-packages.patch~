@@ -1,0 +1,36 @@
+From f5e5a9d90e2a45fd0476fec1c1730770306437cd Mon Sep 17 00:00:00 2001
+From: Philippe Bellanger <pbellanger@hotmail.com>
+Date: Fri, 17 Mar 2017 21:20:04 -0400
+Subject: [PATCH 2/2] Added overrides to remove unecessary aosp packages
+
+---
+ modules/LatinImeGoogle/Android.mk | 2 +-
+ modules/Wallpapers/Android.mk     | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/modules/LatinImeGoogle/Android.mk b/modules/LatinImeGoogle/Android.mk
+index e74ecb3..5fc4029 100644
+--- a/modules/LatinImeGoogle/Android.mk
++++ b/modules/LatinImeGoogle/Android.mk
+@@ -5,6 +5,6 @@ LOCAL_MODULE := LatinImeGoogle
+ LOCAL_PACKAGE_NAME := com.google.android.inputmethod.latin
+ 
+ GAPPS_LOCAL_OVERRIDES_MIN_VARIANT :=
+-GAPPS_LOCAL_OVERRIDES_PACKAGES := LatinIME
++GAPPS_LOCAL_OVERRIDES_PACKAGES := LatinIME OpenWnn
+ 
+ include $(BUILD_GAPPS_PREBUILT_APK)
+diff --git a/modules/Wallpapers/Android.mk b/modules/Wallpapers/Android.mk
+index f2bfadc..413146f 100644
+--- a/modules/Wallpapers/Android.mk
++++ b/modules/Wallpapers/Android.mk
+@@ -4,4 +4,6 @@ include $(GAPPS_CLEAR_VARS)
+ LOCAL_MODULE := Wallpapers
+ LOCAL_PACKAGE_NAME := com.google.android.apps.wallpaper
+ 
++GAPPS_LOCAL_OVERRIDES_PACKAGES := Galaxy4 HoloSpiralWallpaper LiveWallpapers LiveWallpapersPicker NoiseField PhaseBeam PhotoTable
++
+ include $(BUILD_GAPPS_PREBUILT_APK)
+-- 
+1.9.1
+

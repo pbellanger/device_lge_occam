@@ -1,0 +1,53 @@
+From 2e24a10c3e27349baf0a3f47fd9269bbde8c5cd4 Mon Sep 17 00:00:00 2001
+From: Philippe Bellanger <pbellanger@hotmail.com>
+Date: Thu, 30 Mar 2017 21:27:52 -0400
+Subject: [PATCH] Combination of commits from LineageOS/android_bionic
+
+linker: Make platform text relocations denial optional
+ * Use the TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
+    configuration to allow a device to use legacy proprietary
+    libraries like camera on non-user build variants
+
+ * Partial revert "Remove textrels support for platform libs"
+    commit 8068786.
+
+Change-Id: I994ab1a600a0b237b496ceebe2dd54febc28a6bd
+
+and:
+
+linker: allow text relocations on user builds
+* This check was originally added to prevent this flag
+  from making it in to production builds at inc. We're
+  not shipping any production builds and in the interest
+  of security regarding userdebug vs user, adb root for
+  example, allow building with this flag on more secure
+  builds.
+
+Change-Id: I92fadb191d74ccaede175715e9bd42650857ae88
+(cherry picked from commit 0178c1e)
+---
+ linker/Android.mk | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/linker/Android.mk b/linker/Android.mk
+index 4a4ca5c..8ee33a9 100644
+--- a/linker/Android.mk
++++ b/linker/Android.mk
+@@ -54,6 +54,14 @@ ifeq ($(TARGET_IS_64_BIT),true)
+ LOCAL_CPPFLAGS += -DTARGET_IS_64_BIT
+ endif
+ 
++ifeq ($(TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS),true)
++ifeq ($(user_variant),user)
++$(error Do not enable text relocations on user builds)
++else
++LOCAL_CPPFLAGS += -DTARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS
++endif
++endif
+++
+ # We need to access Bionic private headers in the linker.
+ LOCAL_CFLAGS += -I$(LOCAL_PATH)/../libc/
+ 
+-- 
+1.9.1
+

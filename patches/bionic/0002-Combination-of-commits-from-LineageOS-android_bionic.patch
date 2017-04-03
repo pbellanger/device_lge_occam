@@ -44,7 +44,7 @@ index 4a4ca5c..8ee33a9 100644
 +LOCAL_CPPFLAGS += -DTARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS
 +endif
 +endif
-++
++
  # We need to access Bionic private headers in the linker.
  LOCAL_CFLAGS += -I$(LOCAL_PATH)/../libc/
  

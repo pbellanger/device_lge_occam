@@ -1,22 +1,20 @@
-From 3469f049b0d41f70d55c674eb93b857bd8e96e97 Mon Sep 17 00:00:00 2001
-From: Young-Ho Cha <ganadist@gmail.com>
-Date: Wed, 9 Dec 2015 09:25:45 +0900
-Subject: [PATCH 4/4] sound: remove default all audio package
+From 70ad3d9b44e27c9a4d159b0d2a435a546e8ac32c Mon Sep 17 00:00:00 2001
+From: Philippe Bellanger <pbellanger@hotmail.com>
+Date: Mon, 3 Apr 2017 13:42:11 -0400
+Subject: [PATCH] Remove AllAudio.mk make file to replace with my own in my
+ device repo
 
-each AudioPackage.mk in device tree will replace this
-
-Signed-off-by: Young-Ho Cha <ganadist@gmail.com>
 ---
- data/sounds/AllAudio.mk | 234 ------------------------------------------------
- 1 file changed, 234 deletions(-)
+ data/sounds/AllAudio.mk | 235 ------------------------------------------------
+ 1 file changed, 235 deletions(-)
  delete mode 100644 data/sounds/AllAudio.mk
 
 diff --git a/data/sounds/AllAudio.mk b/data/sounds/AllAudio.mk
 deleted file mode 100644
-index f6d8ee9..0000000
+index edfd380..0000000
 --- a/data/sounds/AllAudio.mk
 +++ /dev/null
-@@ -1,234 +0,0 @@
+@@ -1,235 +0,0 @@
 -# Copyright 2013 The Android Open Source Project
 -#
 -# Licensed under the Apache License, Version 2.0 (the "License");
@@ -247,10 +245,11 @@ index f6d8ee9..0000000
 -    $(LOCAL_PATH)/effects/ogg/Unlock.ogg:system/media/audio/ui/Unlock.ogg \
 -    $(LOCAL_PATH)/effects/ogg/Trusted_48k.ogg:system/media/audio/ui/Trusted.ogg \
 -    $(LOCAL_PATH)/effects/ogg/VideoRecord_48k.ogg:system/media/audio/ui/VideoRecord.ogg \
+-    $(LOCAL_PATH)/effects/ogg/VideoStop_48k.ogg:system/media/audio/ui/VideoStop.ogg \
 -    $(LOCAL_PATH)/effects/ogg/WirelessChargingStarted.ogg:system/media/audio/ui/WirelessChargingStarted.ogg \
 -    $(LOCAL_PATH)/effects/ogg/camera_click_48k.ogg:system/media/audio/ui/camera_click.ogg \
 -    $(LOCAL_PATH)/effects/ogg/camera_focus.ogg:system/media/audio/ui/camera_focus.ogg \
 -
 -- 
-2.6.3
+1.9.1
 

@@ -30,9 +30,9 @@ PRODUCT_PROPERTY_OVERRIDES := \
 	ro.com.android.dateformat=MM-dd-yyyy \
 	ro.com.android.dataroaming=false \
 	net.bt.name=Nexus4 \
-	ro.config.ringtone=Titania.ogg \
-	ro.config.notification_sound=Tethys.ogg \
-	ro.config.alarm_alert=Oxygen.ogg \
+	ro.config.ringtone=Zen.ogg \
+	ro.config.notification_sound=Chime.ogg \
+	ro.config.alarm_alert=Flow.ogg \
 
 #	persist.sys.debug.multi_window=1 \ # enable multi window
 

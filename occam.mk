@@ -24,8 +24,6 @@ PRODUCT_PACKAGE_OVERLAYS := \
 	device/lge/occam/overlay-occam \
 	device/lge/occam/overlay-nexus \
 
-#	device/lge/occam/overlay-car \
-
 PRODUCT_PROPERTY_OVERRIDES := \
 	ro.com.android.dateformat=MM-dd-yyyy \
 	ro.com.android.dataroaming=false \
@@ -33,10 +31,6 @@ PRODUCT_PROPERTY_OVERRIDES := \
 	ro.config.ringtone=Zen.ogg \
 	ro.config.notification_sound=Chime.ogg \
 	ro.config.alarm_alert=Flow.ogg \
-
-#	persist.sys.debug.multi_window=1 \ # enable multi window
-
-PRODUCT_PROPERTY_OVERRIDES += \
 	ro.telephony.default_network=3 \
 	ro.ril.def.preferred.network=3 \
 	ro.com.android.mobiledata=true \
@@ -46,7 +40,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	gesture.disable_camera_launch=1 \
 
 # remove unecessary google packages  to reduce system image
-GAPPS_EXCLUDED_PACKAGES := GoogleVrCore
+GAPPS_EXCLUDED_PACKAGES := GoogleVrCore \
+        GoogleCamera
 
 # override package for reduce system image
 PRODUCT_PACKAGES := \
@@ -75,8 +70,6 @@ PRODUCT_PACKAGES += \
 	PartnerBookmarksProvider \
 	CellBroadcastReceiver \
 	OccamLayout \
-
-PRODUCT_PACKAGES += \
 	Stk \
 	NfcProvision
 
@@ -88,6 +81,7 @@ PRODUCT_COPY_FILES := \
 	device/lge/occam/init.occam.rc:root/init.occam.rc \
 
 $(call inherit-product, vendor/bijia/googleaddons/media/bootanimation.mk)
+#$(call inherit-product, vendor/bijia/googleaddons/lib/google-lib.mk)
 $(call inherit-product, vendor/google/build/opengapps-packages.mk)
 $(call inherit-product, device/lge/mako/full_mako.mk)
 $(call inherit-product, device/lge/occam/AudioPackage.mk)
@@ -116,9 +110,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	af.fast_track_multiplier=1 \
 	ro.build.expect.bootloader=MAKOZ30f \
 	ro.build.expect.baseband=M9615A-CEFWMAZM-2.0.1700.27 \
+        ro.product.first_api_level=17 \
+        media.stagefright.legacyencoder=1
 
 # reduce system image size
 PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
+PRODUCT_AAPT_PREBUILT_DPI := xhdpi hdpi
 PRODUCT_LOCALES := en_US en_GB fr_FR zh-rTW
 
 PRODUCT_NAME := occam

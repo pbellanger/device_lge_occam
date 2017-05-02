@@ -12,7 +12,7 @@ This ROM would not have been possible without [Dmitry Grinberg's hacks](http://d
 See [Requirements](http://s.android.com/source/requirements.html) and [Establishing a Build Environment](http://s.android.com/source/initializing.html) to set up a build environment on your computer.
 
 ## Build Instructions:
-    $ repo init -u https://android.googlesource.com/platform/manifest -b android-6.0.1_r79 -g default,-flo,-fugu,-shamu,-flounder,-hammerhead,-bullhead,-angler -p linux
+    $ repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.2_r8 -g default,-flo,-fugu,-shamu,-flounder,-hammerhead,-bullhead,-angler -p linux
     $ cd .repo
     $ git clone https://github.com/pbellanger/local_manifests.git
     $ cd ..

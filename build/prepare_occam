@@ -17,3 +17,7 @@ do
     ( cd ${APPLY_DIR} && git am ${PATCH} )
   done
 done
+
+# Hack to force a prior version of googleCamera. Versions 3 and up do not work on mako with AOSP 7.1.2
+# Need to update the API level (currently 25) when a new version of Android becomes available
+cp $TOP/vendor/bijia/googleaddons/apk/googlecamera/arm/app/com.google.android.googlecamera/19/nodpi/27010130.apk $TOP/vendor/opengapps/sources/arm/app/com.google.android.googlecamera/25/nodpi/*.apk

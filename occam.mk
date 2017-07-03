@@ -40,8 +40,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	gesture.disable_camera_launch=1 \
 
 # remove unecessary google packages  to reduce system image
-GAPPS_EXCLUDED_PACKAGES := GoogleVrCore \
-        GoogleCamera
+GAPPS_EXCLUDED_PACKAGES := GoogleVrCore
 
 # override package for reduce system image
 PRODUCT_PACKAGES := \

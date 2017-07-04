@@ -65,7 +65,6 @@ PRODUCT_PACKAGES := \
         PlayGamesStub
 
 PRODUCT_PACKAGES += \
-	NexusProvision \
 	PartnerBookmarksProvider \
 	CellBroadcastReceiver \
 	OccamLayout \

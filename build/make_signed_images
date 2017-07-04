@@ -1,0 +1,9 @@
+# To make signed target files:
+echo "Generating signed target files..."
+./build/tools/releasetools/sign_target_files_apks -o -d vendor/bijia/security out/dist/*-target_files-*.zip signed-target_files.zip
+# To make a full system image:
+echo "Generating full signed image..."
+./build/tools/releasetools/img_from_target_files signed-target_files.zip occam-signed-img-eng.$(date +%Y%m%d).zip
+# To make an OTA update image: 
+echo "Generating signed OTA update..."
+./build/tools/releasetools/ota_from_target_files -k vendor/bijia/security/releasekey signed-target_files.zip occam-signed-ota-update.$(date +%Y%m%d).zip

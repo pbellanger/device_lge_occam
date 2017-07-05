@@ -20,9 +20,7 @@ GAPPS_FORCE_PACKAGE_OVERRIDES := true
 GAPPS_FORCE_MATCHING_DPI := false
 GAPPS_FORCE_PIXEL_LAUNCHER := true
 
-PRODUCT_PACKAGE_OVERLAYS := \
-	device/lge/occam/overlay-occam \
-	device/lge/occam/overlay-nexus \
+PRODUCT_PACKAGE_OVERLAYS := 
 
 PRODUCT_PROPERTY_OVERRIDES := \
 	ro.com.android.dateformat=MM-dd-yyyy \

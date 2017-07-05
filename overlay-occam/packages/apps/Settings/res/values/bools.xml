@@ -1,4 +1,0 @@
-<resources>
-  <bool name="config_show_regulatory_info">true</bool>
-  <bool name="has_powercontrol_widget">false</bool>
-</resources>

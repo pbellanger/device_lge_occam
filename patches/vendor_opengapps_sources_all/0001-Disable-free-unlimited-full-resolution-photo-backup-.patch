@@ -1,0 +1,25 @@
+From ff157c6993d7e39cf26aa5907c359454e7759a54 Mon Sep 17 00:00:00 2001
+From: Philippe Bellanger <pbellanger@hotmail.com>
+Date: Thu, 6 Jul 2017 17:09:49 -0400
+Subject: [PATCH] Disable free unlimited full resolution photo backup reserved
+ to Pixel owners
+
+---
+ etc/sysconfig/nexus.xml | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/etc/sysconfig/nexus.xml b/etc/sysconfig/nexus.xml
+index 56ddab1..1de458f 100644
+--- a/etc/sysconfig/nexus.xml
++++ b/etc/sysconfig/nexus.xml
+@@ -5,7 +5,4 @@
+     <!-- This is meant to be the canonical feature identifying 2016 and newer Nexus devices. -->
+     <feature name="com.google.android.feature.PIXEL_EXPERIENCE" />
+ 
+-    <!-- Both versions of this string are needed due to a miscommunication. b/29978934 -->
+-    <feature name="com.google.android.apps.photos.NEXUS_PRELOAD" />
+-    <feature name="com.google.android.apps.photos.nexus_preload" />
+ </config>
+-- 
+1.9.1
+

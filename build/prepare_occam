@@ -32,4 +32,4 @@ cp -r $TOP/vendor/bijia/googleaddons/apk/HotwordEnrollment/all/priv-app/com.andr
 
 # Copy last known working version for mako of Google Search apk which is no longer part of the opengapps repo
 rm -r $TOP/vendor/opengapps/sources/arm/priv-app/com.google.android.googlequicksearchbox/
-cp -r $TOP/vendor/bijia/googleaddons/apk/Velvet/arm/priv-app/com.google.android.googlequicksearchbox/ $TOP/vendor/opengapps/sources/arm/priv-app/.
+cp -r $TOP/vendor/bijia/googleaddons/apk/velvet/arm/priv-app/com.google.android.googlequicksearchbox/ $TOP/vendor/opengapps/sources/arm/priv-app/.

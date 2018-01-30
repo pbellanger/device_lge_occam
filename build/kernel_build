@@ -1,6 +1,0 @@
-export CROSS_COMPILE "${ANDROID_BUILD_TOP}/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin/arm-eabi-"
-cd ${ANDROID_BUILD_TOP}/kernel/msm
-make mako_defconfig
-make -j$(grep -c processor /proc/cpuinfo)
-cd ../..
-cp kernel/msm/arch/arm/boot/zImage device/lge/mako-kernel/kernel

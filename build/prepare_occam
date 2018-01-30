@@ -1,6 +1,6 @@
 #/bin/bash
 
-repo start occam bionic frameworks/base system/sepolicy vendor/google/build vendor/opengapps/sources/arm vendor/opengapps/sources/all
+repo start oreo frameworks/base vendor/google/build vendor/opengapps/sources/all
 
 TOOLS_DIRNAME=$(dirname $0)
 PATCHES_DIRNAME=${TOOLS_DIRNAME}/../patches/
@@ -17,19 +17,3 @@ do
     ( cd ${APPLY_DIR} && git am ${PATCH} )
   done
 done
-
-# Restore inclusion of HotwordEnrollment package in make file
-cd $TOP/vendor/google/build
-git revert 297fd3bd0d185c1916fa3d7e2acacd1391eb6945
-cd $TOP
-
-# Hack to force a prior version of googleCamera. Versions 3 and up do not work on mako with AOSP 7.1.2
-rm -r $TOP/vendor/opengapps/sources/arm/app/com.google.android.googlecamera/
-cp -r $TOP/vendor/bijia/googleaddons/apk/googlecamera/arm/app/com.google.android.googlecamera/ $TOP/vendor/opengapps/sources/arm/app/.
-
-# Copy last known working version for mako of HotWordEnrollment apk which is no longer part of the opengapps repo
-cp -r $TOP/vendor/bijia/googleaddons/apk/HotwordEnrollment/all/priv-app/com.android.hotwordenrollment/ $TOP/vendor/opengapps/sources/all/priv-app/.
-
-# Copy last known working version for mako of Google Search apk which is no longer part of the opengapps repo
-rm -r $TOP/vendor/opengapps/sources/arm/priv-app/com.google.android.googlequicksearchbox/
-cp -r $TOP/vendor/bijia/googleaddons/apk/velvet/arm/priv-app/com.google.android.googlequicksearchbox/ $TOP/vendor/opengapps/sources/arm/priv-app/.

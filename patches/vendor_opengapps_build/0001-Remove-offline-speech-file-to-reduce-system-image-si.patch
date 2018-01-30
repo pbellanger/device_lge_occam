@@ -1,0 +1,23 @@
+From 8b4f26457c5229d28c3dbd8f8838905417d67a2a Mon Sep 17 00:00:00 2001
+From: Philippe Bellanger <pbellanger@hotmail.com>
+Date: Thu, 25 Jan 2018 22:12:30 -0500
+Subject: [PATCH] Remove offline speech file to reduce system image size
+
+---
+ opengapps-files.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/opengapps-files.mk b/opengapps-files.mk
+index 81d124c..f0baefa 100644
+--- a/opengapps-files.mk
++++ b/opengapps-files.mk
+@@ -19,5 +19,5 @@ ifdef BUILD_VENDORIMAGE
+ endif
+   PRODUCT_COPY_FILES += $(PITTPATT_COPY_FILES)
+ endif
+-  PRODUCT_COPY_FILES += $(call gapps-copy-to-system,all,usr/srec)
++#  PRODUCT_COPY_FILES += $(call gapps-copy-to-system,all,usr/srec)
+ endif
+-- 
+1.9.1
+

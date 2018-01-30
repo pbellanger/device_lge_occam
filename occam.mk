@@ -20,7 +20,7 @@ GAPPS_FORCE_PACKAGE_OVERRIDES := true
 GAPPS_FORCE_MATCHING_DPI := false
 GAPPS_FORCE_PIXEL_LAUNCHER := true
 
-PRODUCT_PACKAGE_OVERLAYS := 
+PRODUCT_PACKAGE_OVERLAYS := device/lge/occam/overlay
 
 PRODUCT_PROPERTY_OVERRIDES := \
 	ro.com.android.dateformat=MM-dd-yyyy \
@@ -37,30 +37,36 @@ PRODUCT_PROPERTY_OVERRIDES := \
 PRODUCT_PROPERTY_OVERRIDES += \
 	gesture.disable_camera_launch=1 \
 
-# remove unecessary google packages  to reduce system image
-GAPPS_EXCLUDED_PACKAGES := GoogleVrCore
+# remove unecessary google packages to reduce system image
+# Nexus 4 does not support VR
+# WebViewGoogle not needed when Chrome is installed
+# Fitness can be a battery hog on Nexus 4 when tracking movement
+# TODO: fix issue related to FaceLock and its required facenet library not being recognized
+# TODO: fix camera
+GAPPS_EXCLUDED_PACKAGES := FaceLock \
+        GoogleCamera \
+        FitnessPrebuilt \
+        GoogleVrCore \
+        WebViewGoogle
 
-# override package for reduce system image
-PRODUCT_PACKAGES := \
-	EditorsDocsStub \
-	EditorsSheetsStub \
-	EditorsSlidesStub \
-	NewsstandStub \
-	HangoutsStub \
-	PrebuiltKeepStub \
-	BooksStub \
-	CloudPrint2Stub \
-	DriveStub \
-	FitnessPrebuiltStub \
-	MapsStub \
-	PlusOneStub \
-	TranslateStub \
-	VideosStub \
-	YouTubeStub \
-        PhotosStub \
+# override package with stubs for reduce system image
+PRODUCT_PACKAGES := BooksStub \
         CalendarGoogleStub \
+        CloudPrint2Stub \
+        DriveStub \
+        EditorsDocsStub \
+        EditorsSheetsStub \
+        EditorsSlidesStub \
+        HangoutsStub \
+        MapsStub \
         Music2Stub \
-        PlayGamesStub
+        NewsstandStub \
+        PhotosStub \
+        PlayGamesStub \
+        PlusOneStub \
+        PrebuiltKeepStub \
+        VideosStub \
+        YouTubeStub
 
 PRODUCT_PACKAGES += \
 	PartnerBookmarksProvider \
@@ -76,8 +82,7 @@ PRODUCT_COPY_FILES := \
 	device/lge/occam/init.occam.rc:root/init.occam.rc \
 
 $(call inherit-product, vendor/bijia/googleaddons/media/bootanimation.mk)
-#$(call inherit-product, vendor/bijia/googleaddons/lib/google-lib.mk)
-$(call inherit-product, vendor/google/build/opengapps-packages.mk)
+$(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
 $(call inherit-product, device/lge/mako/full_mako.mk)
 $(call inherit-product, device/lge/occam/AudioPackage.mk)
 

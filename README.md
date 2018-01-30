@@ -1,27 +1,25 @@
 # What the Nexus 4 may have been like if Google had continued supporting it
 
 ## Introduction:
-This repo contains the files and instructions necessary to build a working Nougat ROM for the Nexus 4 (occam). The ROM is meant to emulate the "pure Android experience" found on the Nexus/Pixel devices and includes all the necessary google apps and services.
+This repo contains the files and instructions necessary to build a working Oreo ROM for the Nexus 4 (occam). The ROM is meant to emulate the "pure Android experience" found on the Nexus/Pixel devices and includes most of the necessary google apps and services.
 See instructions below to build the ROM.
 
 ## Credits:
-This ROM is heavily inspired from the excellent work of [Ganadist](https://github.com/ganadist) who released a ["pure Android experience" Marshmallow ROM for the Nexus 4](https://github.com/ganadist/device_lge_occam).
-This ROM would not have been possible without [Zaclimon's work](http://https://github.com/zaclimon/) on the mako device.
+This ROM is based on the [Unlegacy ROM for mako](https://github.com/Unlegacy-Android/android). The google apps were added with the [Opengapps AOSP Build System project](https://github.com/opengapps/aosp_build).
 
 ## Pre-requisites:
 See [Requirements](http://s.android.com/source/requirements.html) and [Establishing a Build Environment](http://s.android.com/source/initializing.html) to set up a build environment on your computer.
 
 ## Build Instructions:
-    $ repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.2_r18 -g default,-flo,-fugu,-shamu,-flounder,-hammerhead,-bullhead,-angler -p linux
+    $ repo init -u git://github.com/Unlegacy-Android/android.git -b aosp-8.1
     $ cd .repo
-    $ git clone https://github.com/pbellanger/local_manifests.git
+    $ git clone https://github.com/pbellanger/local_manifests.git -b oreo
     $ cd ..
     $ repo sync
     $ export ANDROID_JACK_VM_ARGS="-Xmx4g -Dfile.encoding=UTF-8 -XX:+TieredCompilation"
     $ . build/envsetup.sh
     $ lunch occam-userdebug
     $ prepare_occam >occamprepare.log 2>&1
-    $ kernel_build >occamkernel.log 2>&1
     $ make -j$(grep -c processor /proc/cpuinfo) dist >occambuild.log 2>&1
     $ make_signed_images
 
@@ -37,7 +35,7 @@ Assuming you are at the top of your AOSP working directory:
 
     $ cd out/target/product/mako
 
-If installing the ROM for the first time (**WARNING: all user data will be deleted on your tablet!**):
+If installing the ROM for the first time (**WARNING: all user data will be deleted on your phone!**):
 
     $ fastboot oem unlock
     $ fastboot -w update occam-signed-img-eng.*.zip

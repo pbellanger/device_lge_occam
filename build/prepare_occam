@@ -1,6 +1,6 @@
 #/bin/bash
 
-repo start oreo frameworks/base vendor/google/build vendor/opengapps/sources/all
+repo start oreo frameworks/base vendor/opengapps/build vendor/opengapps/sources/all
 
 TOOLS_DIRNAME=$(dirname $0)
 PATCHES_DIRNAME=${TOOLS_DIRNAME}/../patches/

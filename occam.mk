@@ -20,7 +20,7 @@ GAPPS_FORCE_PACKAGE_OVERRIDES := true
 GAPPS_FORCE_MATCHING_DPI := false
 GAPPS_FORCE_PIXEL_LAUNCHER := true
 
-PRODUCT_PACKAGE_OVERLAYS := device/lge/occam/overlay
+#PRODUCT_PACKAGE_OVERLAYS := device/lge/occam/overlay
 
 PRODUCT_PROPERTY_OVERRIDES := \
 	ro.config.ringtone=Zen.ogg \
@@ -58,11 +58,11 @@ PRODUCT_PACKAGES := BooksStub \
         VideosStub \
         YouTubeStub
 
-PRODUCT_PACKAGES += \
-	PartnerBookmarksProvider \
-	CellBroadcastReceiver \
-	Stk \
-	NfcProvision
+#PRODUCT_PACKAGES += \
+#	PartnerBookmarksProvider \
+#	CellBroadcastReceiver \
+#	Stk \
+#	NfcProvision
 
 # Include additional opengapps package not included in selected variant
 PRODUCT_PACKAGES += \

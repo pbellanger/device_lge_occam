@@ -23,9 +23,9 @@ GAPPS_FORCE_PIXEL_LAUNCHER := true
 #PRODUCT_PACKAGE_OVERLAYS := device/lge/occam/overlay
 
 PRODUCT_PROPERTY_OVERRIDES := \
-	ro.config.ringtone=Zen.ogg \
-	ro.config.notification_sound=Chime.ogg \
-	ro.config.alarm_alert=Flow.ogg \
+	ro.config.ringtone=Zen_too.ogg \
+	ro.config.notification_sound=Popcorn.ogg \
+	ro.config.alarm_alert=Sunshower.ogg \
 
 # remove unecessary google packages to reduce system image
 # Nexus 4 does not support VR

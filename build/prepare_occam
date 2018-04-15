@@ -1,8 +1,8 @@
 #/bin/bash
 
-repo forall frameworks/base system/core system/nfc vendor/opengapps/build vendor/opengapps/sources/all -c "git reset --hard && git clean -f -d && git am --abort"
-repo abandon oreo frameworks/base system/core system/nfc vendor/opengapps/build vendor/opengapps/sources/all 
-repo start oreo frameworks/base system/core system/nfc vendor/opengapps/build vendor/opengapps/sources/all
+repo forall frameworks/base system/core vendor/opengapps/build vendor/opengapps/sources/all -c "git reset --hard && git clean -f -d && git am --abort"
+repo abandon oreo frameworks/base system/core vendor/opengapps/build vendor/opengapps/sources/all 
+repo start oreo frameworks/base system/core vendor/opengapps/build vendor/opengapps/sources/all
 
 TOOLS_DIRNAME=$(dirname $0)
 PATCHES_DIRNAME=${TOOLS_DIRNAME}/../patches/

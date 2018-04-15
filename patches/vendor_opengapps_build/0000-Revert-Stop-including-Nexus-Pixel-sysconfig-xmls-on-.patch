@@ -1,0 +1,95 @@
+From 352293f347ba639abf01651070c768758511b754 Mon Sep 17 00:00:00 2001
+From: Philippe Bellanger <pbellanger@hotmail.com>
+Date: Wed, 4 Apr 2018 23:20:17 -0400
+Subject: [PATCH] Revert "Stop including Nexus/Pixel sysconfig xmls on all
+ devices"
+
+This reverts commit 2bf1b9c095ab0d230a8a2001c81028d72cd89ecc.
+---
+ modules/GoogleDialer/Android.mk | 12 -----------
+ opengapps-files.mk              | 45 +----------------------------------------
+ 2 files changed, 1 insertion(+), 56 deletions(-)
+
+diff --git a/modules/GoogleDialer/Android.mk b/modules/GoogleDialer/Android.mk
+index d75a84c..52657e3 100644
+--- a/modules/GoogleDialer/Android.mk
++++ b/modules/GoogleDialer/Android.mk
+@@ -11,15 +11,3 @@ GAPPS_LOCAL_OVERRIDES_PACKAGES := Dialer
+ LOCAL_REQUIRED_MODULES := GoogleDialer_dialer_experience.xml
+ 
+ include $(BUILD_GAPPS_PREBUILT_APK)
+-
+-include $(CLEAR_VARS)
+-include $(GAPPS_CLEAR_VARS)
+-
+-LOCAL_MODULE := GoogleDialer_dialer_experience.xml
+-LOCAL_MODULE_STEM := dialer_experience.xml
+-LOCAL_MODULE_TAGS := optional
+-LOCAL_MODULE_CLASS := ETC
+-LOCAL_SRC_FILES := $(GAPPS_SOURCES_PATH)/all/etc/sysconfig/dialer_experience.xml
+-LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)/sysconfig
+-
+-include $(BUILD_PREBUILT)
+diff --git a/opengapps-files.mk b/opengapps-files.mk
+index 4105b3d..81d124c 100644
+--- a/opengapps-files.mk
++++ b/opengapps-files.mk
+@@ -1,47 +1,7 @@
+ # Always needed
++PRODUCT_COPY_FILES += $(call gapps-copy-to-system,all,etc)
+ PRODUCT_COPY_FILES += $(call gapps-copy-to-system,all,framework)
+ 
+-GAPPS_NEXUS_CODENAMES += \
+-    full_maguro \
+-    full_toro \
+-    full_toroplus \
+-    aosp_grouper \
+-    aosp_tilapia \
+-    aosp_manta \
+-    aosp_mako \
+-    aosp_flo \
+-    aosp_deb \
+-    aosp_hammerhead \
+-    aosp_flounder \
+-    aosp_shamu \
+-    aosp_angler \
+-    aosp_bullhead
+-
+-GAPPS_PIXEL_CODENAMES += \
+-    aosp_marlin \
+-    aosp_sailfish \
+-    aosp_muskie \
+-    aosp_taimen \
+-    aosp_wahoo
+-
+-gapps_etc_files := $(call gapps-copy-to-system,all,etc)
+-
+-# Remove google_build.xml on non-Pixel devices
+-ifeq ($(filter $(GAPPS_PIXEL_CODENAMES),$(TARGET_PRODUCT)),)
+-  gapps_etc_files := $(filter-out %sysconfig/google_build.xml,$(gapps_etc_files))
+-endif
+-
+-# Remove nexus.xml on non-Nexus devices
+-ifeq ($(filter $(GAPPS_NEXUS_CODENAMES),$(TARGET_PRODUCT)),)
+-  gapps_etc_files := $(filter-out %sysconfig/nexus.xml,$(gapps_etc_files))
+-endif
+-
+-# This is included as part of GoogleDialer build, for devices that have the
+-# GoogleDialer
+-gapps_etc_files := $(filter-out %sysconfig/dialer_experience.xml,$(gapps_etc_files))
+-
+-PRODUCT_COPY_FILES += $(gapps_etc_files)
+-
+ # check if we are building a vendor image
+ ifneq ($(CALLED_FROM_SETUP),true)
+ BUILD_VENDORIMAGE := $(shell CALLED_FROM_SETUP=true BUILD_SYSTEM=build/core \
+@@ -61,6 +21,3 @@ endif
+ endif
+   PRODUCT_COPY_FILES += $(call gapps-copy-to-system,all,usr/srec)
+ endif
+-
+-# Reset internal variables
+-gapps_etc_files :=
+-- 
+1.9.1
+

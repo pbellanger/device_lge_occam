@@ -15,7 +15,7 @@ See [Requirements](http://s.android.com/source/requirements.html) and [Establish
     $ cd .repo
     $ git clone https://github.com/pbellanger/local_manifests.git -b oreo
     $ cd ..
-    $ repo sync
+    $ repo sync -d -c --force-sync --jobs=1 --no-tags
     $ export ANDROID_JACK_VM_ARGS="-Xmx4g -Dfile.encoding=UTF-8 -XX:+TieredCompilation"
     $ . build/envsetup.sh
     $ lunch occam-userdebug

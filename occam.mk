@@ -27,17 +27,22 @@ PRODUCT_PROPERTY_OVERRIDES := \
 	ro.config.notification_sound=Popcorn.ogg \
 	ro.config.alarm_alert=Sunshower.ogg \
 
-# remove unecessary google packages to reduce system image
+# remove unecessary google packages 
 # Nexus 4 does not support VR
 # WebViewGoogle not needed when Chrome is installed
 # Fitness can be a battery hog on Nexus 4 when tracking movement
-# TODO: fix issue related to FaceLock and its required facenet library not being recognized
-# TODO: fix camera
-GAPPS_EXCLUDED_PACKAGES := FaceLock \
-        GoogleCamera \
-        FitnessPrebuilt \
+GAPPS_EXCLUDED_PACKAGES := FitnessPrebuilt \
         GoogleVrCore \
         WebViewGoogle
+
+# Remove packages to reduce system image:
+#    - GMail (use Inbox instead)
+#    - News and Weather as it seems now replaced with the new gNews (formerly Newsstand)
+#    - Instant apps (may be installed automtically by gPlayStore)
+# TODO: make a stub of PrebuiltGmail
+GAPPS_EXCLUDED_PACKAGES += PrebuiltGmail \
+        PrebuiltNewsWeather \
+        PrebuiltGmsCoreInstantApps \
 
 # override package with stubs for reduce system image
 PRODUCT_PACKAGES := BooksStub \

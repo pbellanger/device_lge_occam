@@ -1,0 +1,24 @@
+From 88be672c92c66cf4aa9c499b8bc84a29e8edc2b2 Mon Sep 17 00:00:00 2001
+From: Philippe Bellanger <pbellanger@hotmail.com>
+Date: Mon, 21 May 2018 22:40:05 -0400
+Subject: [PATCH] Overwrite AOSP Email package
+
+---
+ modules/PrebuiltExchange3Google/Android.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/PrebuiltExchange3Google/Android.mk b/modules/PrebuiltExchange3Google/Android.mk
+index f493523..dbc3519 100644
+--- a/modules/PrebuiltExchange3Google/Android.mk
++++ b/modules/PrebuiltExchange3Google/Android.mk
+@@ -4,6 +4,6 @@ include $(GAPPS_CLEAR_VARS)
+ LOCAL_MODULE := PrebuiltExchange3Google
+ LOCAL_PACKAGE_NAME := com.google.android.gm.exchange
+ 
+-LOCAL_OVERRIDES_PACKAGES := Exchange2
++LOCAL_OVERRIDES_PACKAGES := Exchange2 Email
+ 
+ include $(BUILD_GAPPS_PREBUILT_APK)
+-- 
+1.9.1
+

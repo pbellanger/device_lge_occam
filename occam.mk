@@ -20,7 +20,9 @@ GAPPS_FORCE_PACKAGE_OVERRIDES := true
 GAPPS_FORCE_MATCHING_DPI := false
 GAPPS_FORCE_PIXEL_LAUNCHER := true
 
-#PRODUCT_PACKAGE_OVERLAYS := device/lge/occam/overlay
+# Include overlays to enable LTE
+PRODUCT_PACKAGE_OVERLAYS := \
+        device/lge/occam/overlays
 
 PRODUCT_PROPERTY_OVERRIDES := \
 	ro.config.ringtone=Zen_too.ogg \

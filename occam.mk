@@ -42,9 +42,13 @@ GAPPS_EXCLUDED_PACKAGES := FitnessPrebuilt \
 #    - News and Weather as it seems now replaced with the new gNews (formerly Newsstand)
 #    - Instant apps (may be installed automtically by gPlayStore)
 # TODO: make a stub of PrebuiltGmail
+# TODO: FaceLock force close at runtime. Need to fix.
+# TODO: latest gCamera app does not work on Nexus 4, use version from API level 29 instead
 GAPPS_EXCLUDED_PACKAGES += PrebuiltGmail \
         PrebuiltNewsWeather \
         PrebuiltGmsCoreInstantApps \
+        FaceLock \
+        GoogleCamera
 
 # override package with stubs for reduce system image
 PRODUCT_PACKAGES := BooksStub \

@@ -8,6 +8,6 @@ make_signed_images() {
 
 echo "Create Occam images with the following commands:"
 echo " $ lunch occam-user"
-echo " $ prepare_occam >occamprepare.log 2>&1"
+echo " $ prepare_occam >occamprepare.log 2>occamprepare.err"
 echo " $ make -j$(grep -c processor /proc/cpuinfo) dist >occambuild.log 2>&1"
 echo " $ make_signed_images"

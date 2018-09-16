@@ -1,8 +1,8 @@
 #/bin/bash
 
 repo forall frameworks/base vendor/opengapps/build vendor/opengapps/sources/all -c "git reset --hard && git clean -f -d && git am --abort"
-repo abandon oreo frameworks/base vendor/opengapps/build vendor/opengapps/sources/all
-repo start oreo frameworks/base vendor/opengapps/build vendor/opengapps/sources/all
+repo abandon pie frameworks/base vendor/opengapps/build vendor/opengapps/sources/all
+repo start pie frameworks/base vendor/opengapps/build vendor/opengapps/sources/all
 
 TOOLS_DIRNAME=$(dirname $0)
 PATCHES_DIRNAME=${TOOLS_DIRNAME}/../patches/
@@ -20,6 +20,3 @@ do
   done
 done
 
-echo "applying patch to force installation of latest known working version of gCamera (v2.7) for the Nexus 4"
-PATH_TO_GCAMERA=${ANDROID_BUILD_TOP}/vendor/opengapps/sources/arm/app/com.google.android.googlecamera
-mv ${PATH_TO_GCAMERA}/19/ ${PATH_TO_GCAMERA}/27/

@@ -11,14 +11,14 @@ This ROM is based on the [Unlegacy ROM for mako](https://github.com/Unlegacy-And
 See [Requirements](http://s.android.com/source/requirements.html) and [Establishing a Build Environment](http://s.android.com/source/initializing.html) to set up a build environment on your computer.
 
 ## Build Instructions:
-    $ repo init -u git://github.com/Unlegacy-Android/android.git -b aosp-8.1
+    $ repo init -u git://github.com/Unlegacy-Android/android.git -b aosp-9.0
     $ cd .repo
-    $ git clone https://github.com/pbellanger/local_manifests.git -b oreo
+    $ git clone https://github.com/pbellanger/local_manifests.git -b pie
     $ cd ..
     $ repo sync -d -c --force-sync --jobs=1 --no-tags
     $ export ANDROID_JACK_VM_ARGS="-Xmx4g -Dfile.encoding=UTF-8 -XX:+TieredCompilation"
     $ . build/envsetup.sh
-    $ lunch occam-userdebug
+    $ lunch occam-user
     $ prepare_occam >occamprepare.log 2>&1
     $ make -j$(grep -c processor /proc/cpuinfo) dist >occambuild.log 2>&1
     $ make_signed_images

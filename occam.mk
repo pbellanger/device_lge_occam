@@ -15,12 +15,13 @@
 #
 
 # Opengapps settings 
-GAPPS_VARIANT := stock
+GAPPS_VARIANT := pico
 GAPPS_FORCE_PACKAGE_OVERRIDES := true
 GAPPS_FORCE_MATCHING_DPI := false
 GAPPS_FORCE_PIXEL_LAUNCHER := true
 
 # Include overlays to enable LTE
+# TODO: fix LTE which does not seem to work (incorrect radio img?) 
 PRODUCT_PACKAGE_OVERLAYS := \
         device/lge/occam/overlays
 
@@ -30,27 +31,11 @@ PRODUCT_PROPERTY_OVERRIDES := \
 	ro.config.alarm_alert=Sunshower.ogg \
 
 # remove unecessary google packages 
-# Nexus 4 does not support VR
-# WebViewGoogle not needed when Chrome is installed
-# Fitness can be a battery hog on Nexus 4 when tracking movement
-GAPPS_EXCLUDED_PACKAGES := FitnessPrebuilt \
-        GoogleVrCore \
-        WebViewGoogle
+# (no need to remove anything with opengapps pico variant)
+GAPPS_EXCLUDED_PACKAGES := 
 
-# Remove packages to reduce system image:
-#    - GMail (use Inbox instead)
-#    - News and Weather as it seems now replaced with the new gNews (formerly Newsstand)
-#    - Instant apps (may be installed automtically by gPlayStore)
-# TODO: make a stub of PrebuiltGmail
-# TODO: FaceLock force close at runtime. Need to fix.
-# TODO: latest gCamera app does not work on Nexus 4, use version from API level 29 instead
-GAPPS_EXCLUDED_PACKAGES += PrebuiltGmail \
-        PrebuiltNewsWeather \
-        PrebuiltGmsCoreInstantApps \
-        FaceLock \
-        GoogleCamera
-
-# override package with stubs for reduce system image
+# Install gApps as stubs for reduced system image
+# TODO: create stubs for missing gApps such as GMail, Duo, ...
 PRODUCT_PACKAGES := BooksStub \
         CalendarGoogleStub \
         CloudPrint2Stub \
@@ -69,15 +54,9 @@ PRODUCT_PACKAGES := BooksStub \
         VideosStub \
         YouTubeStub
 
-#PRODUCT_PACKAGES += \
-#	PartnerBookmarksProvider \
-#	CellBroadcastReceiver \
-#	Stk \
-#	NfcProvision
-
 # Include additional opengapps package not included in selected variant
-PRODUCT_PACKAGES += \
-	GCS \
+# TODO: can chrome, GCS, gBoard, and maybe others be included?
+PRODUCT_PACKAGES += 
 
 PRODUCT_COPY_FILES := \
 	device/lge/occam/init.occam.rc:root/init.occam.rc \
@@ -97,7 +76,7 @@ endif
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 PRODUCT_AAPT_PREBUILT_DPI := xhdpi hdpi
-PRODUCT_LOCALES := en_US en_GB fr_FR zh-rTW
+PRODUCT_LOCALES := en_US fr_FR
 
 PRODUCT_NAME := occam
 PRODUCT_BRAND := Google

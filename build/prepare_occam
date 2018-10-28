@@ -1,8 +1,8 @@
 #/bin/bash
 
-repo forall frameworks/base vendor/opengapps/build vendor/opengapps/sources/all -c "git reset --hard && git clean -f -d && git am --abort"
-repo abandon pie frameworks/base vendor/opengapps/build vendor/opengapps/sources/all
-repo start pie frameworks/base vendor/opengapps/build vendor/opengapps/sources/all
+repo forall frameworks/base vendor/opengapps/build device/lge/mako -c "git reset --hard && git clean -f -d && git am --abort"
+repo abandon pie frameworks/base vendor/opengapps/build device/lge/mako
+repo start pie frameworks/base vendor/opengapps/build device/lge/mako
 
 TOOLS_DIRNAME=$(dirname $0)
 PATCHES_DIRNAME=${TOOLS_DIRNAME}/../patches/
@@ -19,4 +19,91 @@ do
     ( cd ${APPLY_DIR} && git am ${PATCH} )
   done
 done
+
+echo cherry-picking the unlegacy-android unmerged changes...
+repo forall build/make device/lge/mako bionic hardware/ril external/perfetto system/core system/bt system/sepolicy vendor/broadcom hardware/qcom/display vendor/unlegacy hardware/qcom/audio kernel/qcom/msm8960 -c "git reset --hard && git clean -f -d && git am --abort"
+repo abandon pie build/make device/lge/mako bionic hardware/ril external/perfetto system/core system/bt system/sepolicy vendor/broadcom hardware/qcom/display vendor/unlegacy hardware/qcom/audio kernel/qcom/msm8960
+repo start pie build/make device/lge/mako bionic hardware/ril external/perfetto system/core system/bt system/sepolicy vendor/broadcom hardware/qcom/display vendor/unlegacy hardware/qcom/audio kernel/qcom/msm8960
+
+cd ${TOP}/build/make
+git revert b8fa6dd104d758a32e08661b0f3315804a47d00d
+cd ${TOP}/kernel/qcom/msm8960
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/99/10299/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/00/10300/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/01/10301/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/02/10302/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/03/10303/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/04/10304/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/05/10305/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/06/10306/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/07/10307/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/08/10308/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/09/10309/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/10/10310/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/11/10311/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/12/10312/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/13/10313/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/14/10314/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/15/10315/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/16/10316/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/17/10317/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/18/10318/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/19/10319/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/20/10320/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/51/10351/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/04/10404/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/05/10405/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/06/10406/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_kernel_qcom_msm8960 refs/changes/07/10407/1 && git cherry-pick FETCH_HEAD
+cd ${TOP}/bionic
+git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_bionic refs/changes/34/10134/1 && git cherry-pick FETCH_HEAD
+git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_bionic refs/changes/35/10235/1 && git cherry-pick FETCH_HEAD
+#cd ${TOP}/hardware/ril
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_ril refs/changes/36/10136/2 && git cherry-pick FETCH_HEAD
+cd ${TOP}/external/perfetto
+git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_external_perfetto refs/changes/23/10423/1 && git cherry-pick FETCH_HEAD
+cd ${TOP}/system/core
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_system_core refs/changes/60/10160/6 && git cherry-pick FETCH_HEAD
+git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_system_core refs/changes/31/10431/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_system_core refs/changes/86/10486/4 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_system_core refs/changes/87/10487/2 && git cherry-pick FETCH_HEAD
+#cd ${TOP}/system/bt
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_system_bt refs/changes/39/10139/3 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_system_bt refs/changes/40/10140/4 && git cherry-pick FETCH_HEAD
+cd ${TOP}/system/sepolicy
+git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_system_sepolicy refs/changes/59/10159/4 && git cherry-pick FETCH_HEAD
+#cd ${TOP}/vendor/broadcom
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/proprietary_vendor_broadcom refs/changes/82/10382/2 && git cherry-pick FETCH_HEAD
+cd ${TOP}/hardware/qcom/display
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_display refs/changes/78/10378/4 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_display refs/changes/79/10379/4 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_display refs/changes/80/10380/4 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_display refs/changes/81/10381/4 && git cherry-pick FETCH_HEAD
+git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_display refs/changes/87/10387/2 && git cherry-pick FETCH_HEAD
+git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_display refs/changes/88/10388/2 && git cherry-pick FETCH_HEAD
+git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_display refs/changes/89/10389/2 && git cherry-pick FETCH_HEAD
+git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_display refs/changes/90/10390/2 && git cherry-pick FETCH_HEAD
+git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_display refs/changes/91/10391/2 && git cherry-pick FETCH_HEAD
+git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_display refs/changes/92/10392/2 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_display refs/changes/93/10393/2 && git cherry-pick FETCH_HEAD
+git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_display refs/changes/94/10394/2 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_display refs/changes/95/10395/2 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_display refs/changes/96/10396/2 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_display refs/changes/97/10397/2 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_display refs/changes/98/10398/2 && git cherry-pick FETCH_HEAD
+git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_display refs/changes/99/10399/2 && git cherry-pick FETCH_HEAD
+cd ${TOP}/vendor/unlegacy
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_vendor_unlegacy refs/changes/07/10607/1 && git cherry-pick FETCH_HEAD
+git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_vendor_unlegacy refs/changes/02/10102/3 && git cherry-pick FETCH_HEAD
+git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_vendor_unlegacy refs/changes/28/10228/3 && git cherry-pick FETCH_HEAD
+cd ${TOP}/hardware/qcom/audio
+git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_audio refs/changes/88/10588/1 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_hardware_qcom_audio refs/changes/89/10589/1 && git cherry-pick FETCH_HEAD
+cd ${TOP}/device/lge/mako
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_device_lge_mako refs/changes/44/10344/2 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_device_lge_mako refs/changes/55/10355/1 && git cherry-pick FETCH_HEAD
+git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_device_lge_mako refs/changes/35/10435/9 && git cherry-pick FETCH_HEAD
+git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_device_lge_mako refs/changes/38/10438/9 && git cherry-pick FETCH_HEAD
+#git fetch https://gerrit.unlegacy-android.org/Unlegacy-Android/android_device_lge_mako refs/changes/40/10440/9 && git cherry-pick FETCH_HEAD
+cd ${TOP}
 

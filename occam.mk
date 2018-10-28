@@ -15,56 +15,56 @@
 #
 
 # Opengapps settings 
-GAPPS_VARIANT := pico
-GAPPS_FORCE_PACKAGE_OVERRIDES := true
-GAPPS_FORCE_MATCHING_DPI := false
-GAPPS_FORCE_PIXEL_LAUNCHER := true
+#GAPPS_VARIANT := pico
+#GAPPS_FORCE_PACKAGE_OVERRIDES := true
+#GAPPS_FORCE_MATCHING_DPI := false
+#GAPPS_FORCE_PIXEL_LAUNCHER := true
 
 # Include overlays to enable LTE
 # TODO: fix LTE which does not seem to work (incorrect radio img?) 
 PRODUCT_PACKAGE_OVERLAYS := \
         device/lge/occam/overlays
 
-PRODUCT_PROPERTY_OVERRIDES := \
-	ro.config.ringtone=Zen_too.ogg \
-	ro.config.notification_sound=Popcorn.ogg \
-	ro.config.alarm_alert=Sunshower.ogg \
+#PRODUCT_PROPERTY_OVERRIDES := \
+#	ro.config.ringtone=Zen_too.ogg \
+#	ro.config.notification_sound=Popcorn.ogg \
+#	ro.config.alarm_alert=Sunshower.ogg \
 
 # remove unecessary google packages 
 # (no need to remove anything with opengapps pico variant)
-GAPPS_EXCLUDED_PACKAGES := 
+#GAPPS_EXCLUDED_PACKAGES := 
 
 # Install gApps as stubs for reduced system image
 # TODO: create stubs for missing gApps such as GMail, Duo, ...
-PRODUCT_PACKAGES := BooksStub \
-        CalendarGoogleStub \
-        CloudPrint2Stub \
-        DriveStub \
-        EditorsDocsStub \
-        EditorsSheetsStub \
-        EditorsSlidesStub \
-        HangoutsStub \
-        MapsStub \
-        Music2Stub \
-        NewsstandStub \
-        PhotosStub \
-        PlayGamesStub \
-        PlusOneStub \
-        PrebuiltKeepStub \
-        VideosStub \
-        YouTubeStub
+#PRODUCT_PACKAGES := BooksStub \
+#        CalendarGoogleStub \
+#        CloudPrint2Stub \
+#        DriveStub \
+#        EditorsDocsStub \
+#        EditorsSheetsStub \
+#        EditorsSlidesStub \
+#        HangoutsStub \
+#        MapsStub \
+#        Music2Stub \
+#        NewsstandStub \
+#        PhotosStub \
+#        PlayGamesStub \
+#        PlusOneStub \
+#        PrebuiltKeepStub \
+#        VideosStub \
+#        YouTubeStub
 
 # Include additional opengapps package not included in selected variant
 # TODO: can chrome, GCS, gBoard, and maybe others be included?
-PRODUCT_PACKAGES += 
+#PRODUCT_PACKAGES += 
 
 PRODUCT_COPY_FILES := \
 	device/lge/occam/init.occam.rc:root/init.occam.rc \
 
-$(call inherit-product, vendor/bijia/googleaddons/media/bootanimation.mk)
-$(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
+#$(call inherit-product, vendor/bijia/googleaddons/media/bootanimation.mk)
+#$(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
 $(call inherit-product, device/lge/mako/full_mako.mk)
-$(call inherit-product, device/lge/occam/AudioPackage.mk)
+#$(call inherit-product, device/lge/occam/AudioPackage.mk)
 
 ifeq ($(TARGET_BUILD_VARIANT),user)
   PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \

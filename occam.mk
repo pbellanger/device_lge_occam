@@ -35,7 +35,8 @@ PRODUCT_PROPERTY_OVERRIDES := \
 # Fitness can be a battery hog on Nexus 4 when tracking movement
 GAPPS_EXCLUDED_PACKAGES := FitnessPrebuilt \
         GoogleVrCore \
-        WebViewGoogle
+        WebViewGoogle \
+        FaceLock
 
 # Remove packages to reduce system image:
 #    - GMail (use Inbox instead)
@@ -90,6 +91,8 @@ ifeq ($(TARGET_BUILD_VARIANT),user)
 endif
 
 # reduce system image size
+MINIMAL_FONT_FOOTPRINT := true
+SMALLER_FONT_FOOTPRINT := true
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 PRODUCT_AAPT_PREBUILT_DPI := xhdpi hdpi

@@ -1,0 +1,26 @@
+From 0086e8657130d138515cb06eea357f56ce783559 Mon Sep 17 00:00:00 2001
+From: Philippe Bellanger <pbellanger@hotmail.com>
+Date: Tue, 30 Oct 2018 22:45:05 -0400
+Subject: [PATCH] Do not copy offline speech files to reduce image size
+
+---
+ opengapps-files.mk | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/opengapps-files.mk b/opengapps-files.mk
+index 96c6859..0b9916e 100644
+--- a/opengapps-files.mk
++++ b/opengapps-files.mk
+@@ -110,7 +110,8 @@ ifdef BUILD_VENDORIMAGE
+ endif
+   PRODUCT_COPY_FILES += $(PITTPATT_COPY_FILES)
+ endif
+-  PRODUCT_COPY_FILES += $(call gapps-copy-to-system,all,usr/srec)
++#  Do not copy offline speech files to reduce image size
++#  PRODUCT_COPY_FILES += $(call gapps-copy-to-system,all,usr/srec)
+ endif
+ 
+ # Reset internal variables
+-- 
+1.9.1
+
